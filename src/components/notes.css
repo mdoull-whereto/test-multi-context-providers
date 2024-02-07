@@ -1,0 +1,29 @@
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .notes__title {
+    font-size: 32px;
+  }
+
+  .note {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 10px 20px;
+    display: flex;
+
+    .note__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      > div {
+        text-align: left;
+      }
+      .note__content__text {
+        display: block;
+      }
+    }
+  }
+}

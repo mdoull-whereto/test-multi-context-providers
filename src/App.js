@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
+import MultiCounter from './components/MultiCounter';
+import Notes from './components/Notes';
+import { GlobalContextProvider } from './context/Global';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app__title">GLOBAL CONTEXT</div>
+      <GlobalContextProvider>
+          <MultiCounter number={3} />
+          <Notes />
+      </GlobalContextProvider>
+      <div className="app__title">MULTI CONTEXT</div>
+      
     </div>
+
   );
 }
 
