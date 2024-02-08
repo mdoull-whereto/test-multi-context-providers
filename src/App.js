@@ -10,6 +10,7 @@ import NotesWithSeparateState from './components/NotesWithSeparateState'
 function App() {
   return (
     <div className="app">
+      <div>do some stuff with the console open and see which components and providers are re-rendering</div>
       <div className="app__title">GLOBAL CONTEXT</div>
       <GlobalContextProvider>
         <MultiCounter number={3} />
