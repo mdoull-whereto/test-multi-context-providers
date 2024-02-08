@@ -1,5 +1,5 @@
 import { createContext, useReducer, useMemo } from 'react'
-import * as ActionTypes from './ActionTypes'
+import * as ActionTypes from '../ActionTypes'
 
 const INIT_STATE = {
   count: 0,
@@ -43,8 +43,6 @@ const globalReducer = (state, action) => {
       }
     }
     case ActionTypes.NOTE_ADD: {
-      const newnotes = [...state.notes, action.payload]
-
       return {
         ...state,
         notes: [...state.notes, action.payload]

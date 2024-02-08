@@ -1,11 +1,11 @@
 import React, { useContext, useRef, useEffect } from 'react'
 import Counter from './Counter'
-import { GlobalContext } from '../context/global/Global'
+import { MultiCountContext } from '../context/multi/MultiCounter'
 import { logComponentTime } from '../logging'
 
-export default function MultiCounter ({ number }) {
+export default function MultiCounterWithSeparateState ({ number }) {
   const counters = useRef()
-  const { initMultiCounter } = useContext(GlobalContext)
+  const { initMultiCounter } = useContext(MultiCountContext)
 
   useEffect(() => {
     initMultiCounter(number)
@@ -15,12 +15,12 @@ export default function MultiCounter ({ number }) {
     counters.current = new Array(number).fill()
   }
 
-  logComponentTime('multi counter')
+  logComponentTime('multi counter with separate state')
 
   return (
     <div>
       {counters.current.map((_, i) => (
-        <Counter ctx={GlobalContext} key={`multcount${i}`} index={i} />
+        <Counter ctx={MultiCountContext} key={`multss${i}`} index={i} />
       ))}
     </div>
   )

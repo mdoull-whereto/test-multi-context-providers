@@ -1,5 +1,6 @@
-import React, { useCallback, useContext, useState } from 'react'
-import { GlobalContext } from '../context/global/Global'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
+
+import { NotesContext } from '../context/multi/Notes'
 import { logComponentTime } from '../logging'
 import './notes.css'
 
@@ -22,13 +23,13 @@ function EditingNote ({
     </div>
   )
 }
-export default function Notes () {
+export default function NotesWithSeparateState () {
   const {
     noteEdit,
     noteAdd,
     noteDelete,
     notes
-  } = useContext(GlobalContext)
+  } = useContext(NotesContext)
 
   const [currentNote, setCurrentNote] = useState(null)
   const [editingMode, setEditingMode] = useState(false)
@@ -38,7 +39,6 @@ export default function Notes () {
   const textEditHandler = useCallback((e) => {
     setCurrentNote(e.target.value)
   }, [])
-
   const handleSaveEdit = useCallback(() => {
     noteEdit(editingIndex, currentNote)
     setEditingIndex(null)
@@ -51,15 +51,14 @@ export default function Notes () {
     setEditingIndex(i)  
     setCurrentNote(notes[i])
   }
-
-  logComponentTime('notes')
+  logComponentTime('notes with separate state')
 
   return (
     <div className="notes">
       <div className="notes__title">NOTES!</div>
       {notes.map((n, i) => {
         return (
-        <div className="note" key={`not${i}`}>
+        <div className="note" key={`notesss${i}`}>
           <div className="note__content">
             <div className="note__content__number"># {i}</div>
             {editingMode && i === editingIndex ? (
